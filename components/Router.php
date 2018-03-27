@@ -26,7 +26,9 @@ class Router
     public function run()
     {
         $uri = $this->getUri();
+
         foreach ($this->routes as $uriPattern => $path) {
+
             if (preg_match("~$uriPattern~", $uri)) {
 
                 $internalRoute = preg_replace("~$uriPattern~", $path, $uri);
@@ -47,7 +49,7 @@ class Router
 
                 $result = call_user_func_array([$controllerObject, $actionName],$parameters);
 
-                if (!$result) {
+                if ($result != null) {
                     break;
                 }
 

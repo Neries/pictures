@@ -9,7 +9,7 @@ class Pictures
      * @rapam integer &id
      */
 
-    public static function getNewsItemByID($id)
+    public static function getPicturesItemByID($id)
     {
         $id = intval($id);
 
@@ -30,22 +30,22 @@ class Pictures
     /**
      * Returns an array of news items
      */
-    public static function getNewsList()
+    public static function getPicturesList()
     {
         $db = Db::getConnection();
-        $newsList = [];
+        $picturesList = [];
 
         $result = $db->query('SELECT * FROM pictures ORDER BY id ASC LIMIT 10');
 
         $i = 0;
         while ($row = $result->fetch()) {
-            $newsList[$i]['id'] = $row['id'];
-            $newsList[$i]['user_id'] = $row['user_id'];
-            $newsList[$i]['location'] = $row['location'];
+            $picturesList[$i]['id'] = $row['id'];
+            $picturesList[$i]['user_id'] = $row['user_id'];
+            $picturesList[$i]['location'] = $row['location'];
             $i++;
         }
 
-        return $newsList;
+        return $picturesList;
 
     }
 
