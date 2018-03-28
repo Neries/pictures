@@ -58,7 +58,6 @@ class Pictures
     public static function writePictures()
     {
         $message = "Error";
-        session_start();
         $db = Db::getConnection();
         $uploaddir = 'img/content/';
         $uploadfile = $uploaddir."$_SESSION[user_id]_".time().'_'.basename($_FILES['uploadfile']['name']);
