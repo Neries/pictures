@@ -51,16 +51,25 @@
 </nav>
 
 
+
+
 <main role="main" style="padding-top: 70px;">
+    <?php if (isset($_SESSION['message'])){
+        ?>
+        <div class="<?=$_SESSION['type_message']?> text-center">
+            <a href="/" class="close" data-dismiss="alert">×</a>
+            <?=$_SESSION['message'] ?>
+        </div>
+        <?php unset ($_SESSION['message']);
+    }
+    ?>
 
         <?=$content?>
 
 </main>
 
-<br>
-<h1>
-    <?=$message ?? ''?>
-</h1>
+
+
 <footer class="container">
     <p>&copy; Company 2017-2018</p>
 </footer>

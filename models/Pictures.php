@@ -36,7 +36,7 @@ class Pictures
     {
         $db = Db::getConnection();
 
-        $result = $db->query('SELECT * FROM pictures ORDER BY id ASC LIMIT 10');
+        $result = $db->query('SELECT * FROM pictures ORDER BY id DESC LIMIT 25');
 
 //        $picturesList = [];
 //        $i = 0;
@@ -49,34 +49,23 @@ class Pictures
 
         $picturesList = $result->fetchAll();
 
-//        die(var_dump($picturesList));
-
         return $picturesList;
 
     }
 
-    public static function writePictures()
+    public static function writePictures($uploadfile)
     {
-        $message = "Error";
+
         $db = Db::getConnection();
-        $uploaddir = 'img/content/';
-        $uploadfile = $uploaddir."$_SESSION[user_id]_".time().'_'.basename($_FILES['uploadfile']['name']);
 
-        if (copy($_FILES['uploadfile']['tmp_name'], $uploadfile))
-        {
-            $statement = $db->prepare("INSERT INTO pictures(user_id, location) VALUES(:user_id, :location)");
-            $statement->execute([
-                "user_id" => $_SESSION['user_id'],
-                "location" => $uploadfile,
-            ]);
+        $statement = $db->prepare("INSERT INTO pictures(user_id, location) VALUES(:user_id, :location)");
 
-            $message = 'Файл сохранен';
-        }
-
-        return $message;
+        $statement->execute([
+            "user_id" => $_SESSION['user_id'],
+            "location" => $uploadfile,
+        ]);
 
 
-//        else { echo "<h3>Ошибка! Не удалось загрузить файл на сервер!</h3>"; exit; }
     }
 
 }

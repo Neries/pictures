@@ -2,6 +2,7 @@
 
 include_once ROOT . '/models/Pictures.php';
 include_once ROOT . '/components/View.php';
+include_once ROOT . '/healpers/PicturesHealper.php';
 
 class PicturesController
 {
@@ -64,12 +65,17 @@ class PicturesController
 
     public function actionUploadFile()
     {
-        Pictures::uploadPictures();
+        $_SESSION['message'] = 'Упсс! Что то пошло не так :(';
+        $_SESSION['type_message'] = 'alert alert-danger';
 
-        //$file = ...
-        // $fileName = PicturesHelper::uploadPicture($file);
+        $uploadfile = uploadPictures::uploadFileName();
+        if (uploadPictures::uploadInFolder($uploadfile)){
+            Pictures::writePictures($uploadfile);
+            $_SESSION['message'] = 'Файл успешно загружен! :)';
+            $_SESSION['type_message'] = 'alert alert-success';
+        }
 
-        // Pictures::save($fileName)
+        header('Location: /');
 
     }
 

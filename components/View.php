@@ -2,8 +2,8 @@
 
 class View
 {
-    public $readyBlock;
-    public $message;
+    private $readyBlock;
+//    private $message;
 
     /**
      * Получаем масив и генерируем блоки с картинками
@@ -15,15 +15,15 @@ class View
 //        $this->readyBlock = $this->generateFormPictures($arrDataFromDb);
 //    }
 
-    public function setMessage($str)
-    {
-        $this->message = $str;
-    }
-
-    public function getMessage()
-    {
-        return $this->message;
-    }
+//    public function setMessage($str)
+//    {
+//        $this->message = $str;
+//    }
+//
+//    public function getMessage()
+//    {
+//        return $this->message;
+//    }
 
     public function setReadyBlock($str)
     {
@@ -38,7 +38,7 @@ class View
     public function masterInclude()
     {
         $content = $this->getReadyBlock();
-        $message = $this->getMessage();
+//        $message = $this->getMessage();
 
         $controllerFile = include_once(ROOT . '/view/master.php');
         if (file_exists($controllerFile)) {
