@@ -5,26 +5,47 @@ include_once ROOT . '/components/View.php';
 
 class PicturesController
 {
+    public $content;
+    public $arr;
+    public $view;
+
+    /**
+     *
+     * создать новый экземпляр класса View и передаем масив
+     * полученный от action
+     * вызываем masterInclude
+     *
+     * @param $arrDataFromDb
+     */
+    public function callMaster($arrDataFromDb)
+    {
+        $master = new View($arrDataFromDb);
+
+        $master->masterInclude();
+    }
+
+    /**
+     * получаем масив всех значений из бд задаем в переменную
+     * передаем масив callMaster
+     *
+     */
+
     public function actionIndex()
     {
 
-        $picturesList = [];
-        $picturesList = Pictures::getPicturesList();
+        $arr = Pictures::getPicturesList();
+        $this->callMaster($arr);
 
-        return $picturesList;
     }
 
     public function actionView($id)
     {
 
         if ($id) {
-            $picturesItem = Pictures::getPicturesItemByID($id);
+            $arr = Pictures::getPicturesItemByID($id);
+            $this->callMaster($arr);
 
-//            $a = new View();
-//            $result =$a->allPictures([$picturesItem['location']]);
-//            return $result;
-
-            return $picturesItem;
         }
     }
+
 }

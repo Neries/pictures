@@ -1,15 +1,15 @@
 <?php
 
 
-
 class Pictures
 {
 
-    /** Returns single news items with specified id
-     * @rapam integer &id
+    /** Returns single pictures items with specified id
+     * @param integer $id
+     * @return array
      */
 
-    public static function getPicturesItemByID($id)
+    public static function getPicturesItemByID(int $id)
     {
         $id = intval($id);
 
@@ -20,7 +20,7 @@ class Pictures
 
             $result->setFetchMode(PDO::FETCH_ASSOC);
 
-            $newsItem = $result->fetch();
+            $newsItem = $result->fetchAll();
 
             return $newsItem;
         }
@@ -28,22 +28,26 @@ class Pictures
     }
 
     /**
-     * Returns an array of news items
+     * Returns an array of pictures items
      */
     public static function getPicturesList()
     {
         $db = Db::getConnection();
-        $picturesList = [];
 
         $result = $db->query('SELECT * FROM pictures ORDER BY id ASC LIMIT 10');
 
-        $i = 0;
-        while ($row = $result->fetch()) {
-            $picturesList[$i]['id'] = $row['id'];
-            $picturesList[$i]['user_id'] = $row['user_id'];
-            $picturesList[$i]['location'] = $row['location'];
-            $i++;
-        }
+//        $picturesList = [];
+//        $i = 0;
+//        while ($row = $result->fetch()) {
+//            $picturesList[$i]['id'] = $row['id'];
+//            $picturesList[$i]['user_id'] = $row['user_id'];
+//            $picturesList[$i]['location'] = $row['location'];
+//            $i++;
+//        }
+
+        $picturesList = $result->fetchAll();
+
+//        die(var_dump($picturesList));
 
         return $picturesList;
 

@@ -13,7 +13,7 @@ if (copy($_FILES['uploadfile']['tmp_name'], $uploadfile))
         "user_id" => $_SESSION['user_id'],
         "location" => $uploadfile,
     ));
-    header('Location:/');
+    header('Location:/pictures');
 }
 else { echo "<h3>Ошибка! Не удалось загрузить файл на сервер!</h3>"; exit; }
 
