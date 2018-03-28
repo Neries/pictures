@@ -9,6 +9,7 @@ class Pictures
      * @return array
      */
 
+
     public static function getPicturesItemByID(int $id)
     {
         $id = intval($id);
@@ -16,6 +17,7 @@ class Pictures
         if ($id) {
 
             $db = Db::getConnection();
+
             $result = $db->query('SELECT * FROM pictures WHERE id=' . $id);
 
             $result->setFetchMode(PDO::FETCH_ASSOC);
@@ -51,6 +53,27 @@ class Pictures
 
         return $picturesList;
 
+    }
+
+    public static function uploadPictures()
+    {
+        session_start();
+        $db = Db::getConnection();
+        $uploaddir = 'img/content/';
+        $uploadfile = $uploaddir."$_SESSION[user_id]_".time().'_'.basename($_FILES['uploadfile']['name']);
+
+        if (copy($_FILES['uploadfile']['tmp_name'], $uploadfile))
+        {
+            $statement = $db->prepare("INSERT INTO pictures(user_id, location) VALUES(:user_id, :location)");
+            $statement->execute([
+                "user_id" => $_SESSION['user_id'],
+                "location" => $uploadfile,
+            ]);
+
+
+            header('Location:/');
+        }
+        else { echo "<h3>Ошибка! Не удалось загрузить файл на сервер!</h3>"; exit; }
     }
 
 }

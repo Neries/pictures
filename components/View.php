@@ -9,15 +9,24 @@ class View
      * получаем строку с данными и сетим её в $readyBlock
      * @param $arrDataFromDb
      */
-    public function __construct($arrDataFromDb)
+//    public function __construct($arrDataFromDb)
+//    {
+//        $this->readyBlock = $this->generateFormPictures($arrDataFromDb);
+//    }
+
+    public function setReadyBlock($str)
     {
-        $this->readyBlock = $this->generateFormPictures($arrDataFromDb);
+        $this->readyBlock = $str;
     }
 
+    public function getReadyBlock()
+    {
+        return $this->readyBlock;
+    }
 
     public function masterInclude()
     {
-        $content = $this->readyBlock;
+        $content = $this->getReadyBlock();
 
         $controllerFile = include_once(ROOT . '/view/master.php');
         if (file_exists($controllerFile)) {
@@ -45,7 +54,32 @@ class View
 
         $str.= '</div><hr></div>';
 
-        return $str;
+        $this->setReadyBlock($str);
+    }
+
+    public function generateFormAdd()
+    {
+        $str = '<div class="container" style="padding-top: 65px">
+            
+                <form action="add/uploadfile" method="post" enctype=multipart/form-data>
+            
+                    <div class="form-group">
+                        <label for="exampleTextarea">Example textarea</label>
+                        <textarea class="form-control" id="exampleTextarea" rows="1"></textarea>
+                    </div>
+            
+            
+                    <div class="form-group">
+                        <label for="exampleInputFile">File input</label>
+                        <input type="file" name=uploadfile class="form-control-file" id="exampleInputFile" aria-describedby="fileHelp">
+                        <small id="fileHelp" class="form-text text-muted">*.png *.jpg</small>
+                    </div>
+            
+                    <input type=submit class="btn btn-primary" value=Загрузить>
+                </form>
+            </div>';
+
+        $this->setReadyBlock($str);
     }
 
 

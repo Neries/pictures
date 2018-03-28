@@ -17,12 +17,12 @@ class PicturesController
      *
      * @param $arrDataFromDb
      */
-    public function callMaster($arrDataFromDb)
-    {
-        $master = new View($arrDataFromDb);
-
-        $master->masterInclude();
-    }
+//    public function callMaster($arrDataFromDb)
+//    {
+//        $master = new View();
+//        $master->generateFormPictures($arrDataFromDb);
+//        $master->masterInclude();
+//    }
 
     /**
      * получаем масив всех значений из бд задаем в переменную
@@ -34,7 +34,9 @@ class PicturesController
     {
 
         $arr = Pictures::getPicturesList();
-        $this->callMaster($arr);
+        $master = new View();
+        $master->generateFormPictures($arr);
+        $master->masterInclude();
 
     }
 
@@ -43,9 +45,26 @@ class PicturesController
 
         if ($id) {
             $arr = Pictures::getPicturesItemByID($id);
-            $this->callMaster($arr);
+            $master = new View();
+            $master->generateFormPictures($arr);
+            $master->masterInclude();
+
+//            $this->callMaster($arr);
 
         }
     }
+
+    public function actionAdd()
+    {
+        $master = new View();
+        $master->generateFormAdd();
+        $master->masterInclude();
+    }
+
+    public function actionUploadFile()
+    {
+        Pictures::uploadPictures();
+    }
+
 
 }

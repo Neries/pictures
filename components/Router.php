@@ -49,7 +49,7 @@ class Router
 
                 $result = call_user_func_array([$controllerObject, $actionName],$parameters);
 
-                if ($result != null) {
+                if (!$result || $result != null) {
                     break;
                 }
 

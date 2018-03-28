@@ -1,3 +1,9 @@
+<?php
+session_start();
+$_SESSION['user_id'] = 13;
+
+?>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -37,7 +43,7 @@
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
-            <a href="/add.php" class="form-control mr-sm-2 btn btn-primary btn-lg active" role="button"
+            <a href="/pictures/add" class="form-control mr-sm-2 btn btn-primary btn-lg active" role="button"
                aria-pressed="true">Add</a>
             <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>

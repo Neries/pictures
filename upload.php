@@ -1,6 +1,6 @@
 <?php
 
-include 'db.php';
+include 'test/db.php';
 session_start();
 $uploaddir = 'img/content/';
 $uploadfile = $uploaddir."$_SESSION[user_id]_".time().'_'.basename($_FILES['uploadfile']['name']);
@@ -9,10 +9,12 @@ $uploadfile = $uploaddir."$_SESSION[user_id]_".time().'_'.basename($_FILES['uplo
 if (copy($_FILES['uploadfile']['tmp_name'], $uploadfile))
 {
     $statement = $pdo->prepare("INSERT INTO pictures(user_id, location) VALUES(:user_id, :location)");
-    $statement->execute(array(
+    $statement->execute([
         "user_id" => $_SESSION['user_id'],
         "location" => $uploadfile,
-    ));
+    ]);
+
+
     header('Location:/pictures');
 }
 else { echo "<h3>Ошибка! Не удалось загрузить файл на сервер!</h3>"; exit; }
