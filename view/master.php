@@ -56,9 +56,9 @@
 <main role="main" style="padding-top: 70px;">
     <?php if (isset($_SESSION['message'])){
         ?>
-        <div class="<?=$_SESSION['type_message']?> text-center">
+        <div class="<?=session('type_message')?> text-center">
             <a href="/" class="close" data-dismiss="alert">×</a>
-            <?=$_SESSION['message'] ?>
+            <?=session('message') ?>
         </div>
         <?php unset ($_SESSION['message']);
     }

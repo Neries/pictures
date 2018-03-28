@@ -1,6 +1,5 @@
 <?php
 
-//header('Location:/pictures');
 require_once 'components/func.php';
 
 session_start();
@@ -19,18 +18,19 @@ $router = new Router();
 $router->run();
 
 
-//$content ->result;
-//die(var_dump($content));
 
-// Придумать шаблонизатор
+//+Придумать шаблонизатор+
 // Не сломать то, что работает
-
-
-//include_once(ROOT . '/view/master.php');
-//$a = new View;
-//$a->master();
-//die;
-
+// Добавить users
+// добавить имя картинки вместо Header
+// поиск?
+// удаление?
+// добавить дату сохранения картинки
+// messages между users
+// добавить асинхронности
+// спросить у Никиты про подгрузку
+// привилегии у users
+// админка?
 
 
 
