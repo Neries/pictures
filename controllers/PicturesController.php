@@ -38,6 +38,7 @@ class PicturesController
         $master->generateFormPictures($arr);
         $master->masterInclude();
 
+
     }
 
     public function actionView($id)
@@ -64,6 +65,12 @@ class PicturesController
     public function actionUploadFile()
     {
         Pictures::uploadPictures();
+
+        //$file = ...
+        // $fileName = PicturesHelper::uploadPicture($file);
+
+        // Pictures::save($fileName)
+
     }
 
 

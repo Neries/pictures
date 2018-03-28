@@ -55,8 +55,9 @@ class Pictures
 
     }
 
-    public static function uploadPictures()
+    public static function writePictures()
     {
+        $message = "Error";
         session_start();
         $db = Db::getConnection();
         $uploaddir = 'img/content/';
@@ -70,10 +71,13 @@ class Pictures
                 "location" => $uploadfile,
             ]);
 
-
-            header('Location:/');
+            $message = 'Файл сохранен';
         }
-        else { echo "<h3>Ошибка! Не удалось загрузить файл на сервер!</h3>"; exit; }
+
+        return $message;
+
+
+//        else { echo "<h3>Ошибка! Не удалось загрузить файл на сервер!</h3>"; exit; }
     }
 
 }

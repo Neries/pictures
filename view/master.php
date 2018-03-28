@@ -58,7 +58,10 @@ $_SESSION['user_id'] = 13;
 
 </main>
 
-
+<br>
+<h1>
+    <?=$message ?? ''?>
+</h1>
 <footer class="container">
     <p>&copy; Company 2017-2018</p>
 </footer>

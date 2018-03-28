@@ -5,7 +5,6 @@ session_start();
 $uploaddir = 'img/content/';
 $uploadfile = $uploaddir."$_SESSION[user_id]_".time().'_'.basename($_FILES['uploadfile']['name']);
 
-
 if (copy($_FILES['uploadfile']['tmp_name'], $uploadfile))
 {
     $statement = $pdo->prepare("INSERT INTO pictures(user_id, location) VALUES(:user_id, :location)");
