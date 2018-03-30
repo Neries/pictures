@@ -12,7 +12,6 @@ class uploadPictures
             return true;
         }
 
-
     }
 
     public static function uploadDir($uploaddir = 'img/content/')

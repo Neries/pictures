@@ -58,11 +58,13 @@ class Pictures
 
         $db = Db::getConnection();
 
-        $statement = $db->prepare("INSERT INTO pictures(user_id, location) VALUES(:user_id, :location)");
+        $statement = $db->prepare("INSERT INTO pictures(user_id, location, name_pic, description) VALUES(:user_id, :location, :name_pic, :description)");
 
         $statement->execute([
             "user_id" => $_SESSION['user_id'],
             "location" => $uploadfile,
+            "name_pic" => $_POST['name'],
+            "description" => $_POST['description'],
         ]);
 
 

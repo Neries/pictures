@@ -54,17 +54,24 @@ class View
         foreach ($arr as $elem) {
             if (is_file($elem['location'])) {
 
-                $str .= '<div class="col-md-3">
-                    <h2>Heading</h2>
-                    <img class="img-fluid" src="../'.$elem['location'].'" alt='.$elem['location'].'>
-                    <p><a class="btn btn-secondary" href="/pictures/'.$elem['id'].'" role="button">details &raquo;</a></p>
-                </div>';
+                $str .= '
+                        <div class="col-md-3">
+                            <div class="thumbnail">
+                              <h2>'.$elem['name_pic'].'</h2>
+                              <img class="img-fluid img-circle" src="../' . $elem['location'] . '" alt=' . $elem['location'] . '>
+                        
+                                 <a href="/pictures/' . $elem['id'] . '" class="btn btn-secondary" role="button">details</a>
+                        
+                            </div>
+                        </div>
+                                ';
 
             }
 
         }
 
-        $str.= '</div><hr></div>';
+        $str .= '</div><hr></div>';
+
 
         $this->setReadyBlock($str);
     }
@@ -74,10 +81,15 @@ class View
         $str = '<div class="container" style="padding-top: 65px">
             
                 <form action="add/uploadfile" method="post" enctype=multipart/form-data>
+                
+                    <div class="form-group">
+                        <label for="name">Picture name:</label>
+                        <input class="form-control" id="name" name="name"  type="text" required>
+                    </div>
             
                     <div class="form-group">
-                        <label for="exampleTextarea">Example textarea</label>
-                        <textarea class="form-control" id="exampleTextarea" rows="1"></textarea>
+                        <label for="description">Description:</label>
+                        <textarea class="form-control" id="description" name="description" rows="5"></textarea>
                     </div>
             
             
