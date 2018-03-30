@@ -67,7 +67,13 @@ class Pictures
             "description" => $_POST['description'],
         ]);
 
-
     }
 
+
+    public static function deletePictures($id)
+    {
+        $db = Db::getConnection();
+        $db->query("DELETE FROM pictures WHERE id=$id");
+
+    }
 }

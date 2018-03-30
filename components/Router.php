@@ -1,5 +1,6 @@
 <?php
 
+
 class Router
 {
 
@@ -23,6 +24,9 @@ class Router
     }
 
 
+    /**
+     *
+     */
     public function run()
     {
         $uri = $this->getUri();
@@ -47,11 +51,20 @@ class Router
                 }
                 $controllerObject = new $controllerName;
 
-                $result = call_user_func_array([$controllerObject, $actionName],$parameters);
+                if (method_exists($controllerObject, $actionName)) {
+                    $result = call_user_func_array([$controllerObject, $actionName], $parameters);
 
-                if (!$result || $result != null) {
+                    if (!$result || $result != null) {
+                        break;
+                    }
+
+                } else {
+                    include_once 'View.php';
+                    $a = new View;
+                    $a->errorNotFound();
                     break;
                 }
+
 
             }
         }

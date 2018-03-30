@@ -1,19 +1,21 @@
-<?php
-die(var_dump($arr));
+<div class="container"><div class="row">
 
-$str = '<div class="container"><div class="row">';
+        <?php foreach ($arr as $elem):
+             if (is_file($elem['location'])): ?>
 
-foreach ($arr as $elem) {
-    if (is_file($elem['location'])) {
+        <div class="col-md-3">
+            <div class="thumbnail">
+                <h2><?=$elem['name_pic']?></h2>
+                <img class="img-fluid img-circle" src="../<?=$elem['location']?>" alt="<?=$elem['location']?>">
 
-        $str .= '<div class="col-md-3">
-                    <h2>Heading</h2>
-                    <img class="img-fluid" src="../'.$elem['location'].'" alt='.$elem['location'].'>
-                    <p><a class="btn btn-secondary" href="/pictures/'.$elem['id'].'" role="button">details &raquo;</a></p>
-                </div>';
+                <a href="/pictures/<?=$elem['id']?>" class="btn btn-secondary" role="button">details &raquo;</a>
+                <a href="/pictures/del/<?=$elem['id']?>" class="btn btn-danger btn-sm pull-right" role="button">Del</i></a>
 
-    }
+            </div>
+        </div>
 
-}
 
-$str.= '</div><hr></div>';
+        <?php endif;
+        endforeach;?>
+
+</div><hr></div>

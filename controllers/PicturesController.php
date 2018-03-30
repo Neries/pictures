@@ -6,30 +6,7 @@ include_once ROOT . '/healpers/PicturesHealper.php';
 
 class PicturesController
 {
-    public $content;
-    public $arr;
-    public $view;
 
-    /**
-     *
-     * создать новый экземпляр класса View и передаем масив
-     * полученный от action
-     * вызываем masterInclude
-     *
-     * @param $arrDataFromDb
-     */
-//    public function callMaster($arrDataFromDb)
-//    {
-//        $master = new View();
-//        $master->generateFormPictures($arrDataFromDb);
-//        $master->masterInclude();
-//    }
-
-    /**
-     * получаем масив всех значений из бд задаем в переменную
-     * передаем масив callMaster
-     *
-     */
 
     public function actionIndex()
     {
@@ -37,7 +14,6 @@ class PicturesController
         $arr = Pictures::getPicturesList();
         $master = new View();
         $master->generateFormPictures($arr);
-        $master->masterInclude();
 
 
     }
@@ -48,10 +24,10 @@ class PicturesController
         if ($id) {
             $arr = Pictures::getPicturesItemByID($id);
             $master = new View();
-            $master->generateFormPictures($arr);
-            $master->masterInclude();
-
-//            $this->callMaster($arr);
+            if (!empty($arr)) {
+                $master->generateFormPictures($arr);
+            }
+            else $master->errorNotFound();
 
         }
     }
@@ -60,7 +36,6 @@ class PicturesController
     {
         $master = new View();
         $master->generateFormAdd();
-        $master->masterInclude();
     }
 
     public function actionUploadFile()
@@ -77,6 +52,12 @@ class PicturesController
 
         header('Location: /');
 
+    }
+
+    public function actionDelete($id)
+    {
+        Pictures::deletePictures($id);
+        header('Location: /');
     }
 
 

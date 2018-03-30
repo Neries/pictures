@@ -1,8 +1,3 @@
-<?php
-
-
-?>
-
 <!doctype html>
 <html lang="en">
 <head>
@@ -15,6 +10,7 @@
     <script src="/css/jquery-3.2.1.slim.min.js"></script>
     <script src="/css/popper.min.js"></script>
     <script src="/css/bootstrap.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
 </head>
 <body>
 
@@ -51,8 +47,6 @@
 </nav>
 
 
-
-
 <main role="main" style="padding-top: 70px;">
     <?php if (isset($_SESSION['message'])){
         ?>
@@ -64,16 +58,5 @@
     }
     ?>
 
-        <?=$content?>
-
 </main>
 
-
-
-<footer class="container">
-    <p>&copy; Company 2017-2018</p>
-</footer>
-
-
-</body>
-</html>
