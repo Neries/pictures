@@ -50,7 +50,6 @@ class Router
                     include_once($controllerFile);
                 }
                 $controllerObject = new $controllerName;
-
                 if (method_exists($controllerObject, $actionName)) {
                     $result = call_user_func_array([$controllerObject, $actionName], $parameters);
 

@@ -49,5 +49,13 @@ class View
         }
     }
 
+    public function test()
+    {
+        $controllerFile = ROOT . '/view/testpage.php';
+        if (file_exists($controllerFile)) {
+            include_once($controllerFile);
+        }
+    }
+
 
 }

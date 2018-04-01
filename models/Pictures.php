@@ -36,7 +36,7 @@ class Pictures
     {
         $db = Db::getConnection();
 
-        $result = $db->query('SELECT * FROM pictures ORDER BY id DESC LIMIT 25');
+        $result = $db->query('SELECT * FROM pictures ORDER BY created_at DESC LIMIT 25');
 
 //        $picturesList = [];
 //        $i = 0;

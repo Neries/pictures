@@ -26,8 +26,7 @@ class PicturesController
             $master = new View();
             if (!empty($arr)) {
                 $master->generateFormPictures($arr);
-            }
-            else $master->errorNotFound();
+            } else $master->errorNotFound();
 
         }
     }
@@ -44,7 +43,7 @@ class PicturesController
         $_SESSION['type_message'] = 'alert alert-danger';
 
         $uploadfile = uploadPictures::uploadFileName();
-        if (uploadPictures::uploadInFolder($uploadfile)){
+        if (uploadPictures::uploadInFolder($uploadfile)) {
             Pictures::writePictures($uploadfile);
             $_SESSION['message'] = 'Файл успешно загружен! :)';
             $_SESSION['type_message'] = 'alert alert-success';
@@ -58,6 +57,12 @@ class PicturesController
     {
         Pictures::deletePictures($id);
         header('Location: /');
+    }
+
+    public function actionTestPage()
+    {
+        $master = new View();
+        $master->test();
     }
 
 

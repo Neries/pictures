@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <div class="error-template">
+            <div style="text-align: center;">
                 <h1>
                     Ууупс!</h1>
                 <h2>

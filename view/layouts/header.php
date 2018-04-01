@@ -11,6 +11,7 @@
     <script src="/css/popper.min.js"></script>
     <script src="/css/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link href="/css/custom.css" rel="stylesheet">
 </head>
 <body>
 
