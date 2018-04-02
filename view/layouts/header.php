@@ -25,7 +25,7 @@
     <div class="collapse navbar-collapse" id="navbarsExampleDefault">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
-                <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link" href="/">Главная <span class="sr-only">(current)</span></a>
             </li>
 
             <li class="nav-item dropdown">
@@ -40,9 +40,9 @@
         </ul>
         <form class="form-inline my-2 my-lg-0">
             <a href="/pictures/add" class="form-control mr-sm-2 btn btn-primary btn-lg active" role="button"
-               aria-pressed="true">Add</a>
-            <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+               aria-pressed="true">Добавить</a>
+            <input class="form-control mr-sm-2" type="text" placeholder="Имя картинки" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Поиск</button>
         </form>
     </div>
 </nav>
@@ -55,7 +55,7 @@
             <a href="#" class="close" data-dismiss="alert">×</a>
             <?=session('message') ?>
         </div>
-        <?php unset ($_SESSION['message']);
+        <?php unset ($_SESSION['message'], $_SESSION['type_message']);
     }
     ?>
 

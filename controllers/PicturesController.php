@@ -25,7 +25,7 @@ class PicturesController
             $arr = Pictures::getPicturesItemByID($id);
             $master = new View();
             if (!empty($arr)) {
-                $master->generateFormPictures($arr);
+                $master->generateFormOnePicture($arr);
             } else $master->errorNotFound();
 
         }
@@ -42,8 +42,8 @@ class PicturesController
         $_SESSION['message'] = 'Упсс! Что то пошло не так :(';
         $_SESSION['type_message'] = 'alert alert-danger';
 
-        $uploadfile = uploadPictures::uploadFileName();
-        if (uploadPictures::uploadInFolder($uploadfile)) {
+        $uploadfile = PicturesHealper::uploadFileName();
+        if (PicturesHealper::uploadInFolder($uploadfile)) {
             Pictures::writePictures($uploadfile);
             $_SESSION['message'] = 'Файл успешно загружен! :)';
             $_SESSION['type_message'] = 'alert alert-success';
@@ -65,5 +65,20 @@ class PicturesController
         $master->test();
     }
 
+    public function actionDownload($id)
+    {
+        if ($id) {
+            $arr = Pictures::getPicturesItemByID($id);
+            $fileDir = ROOT . '/' . $arr[0]['location'];
+            if (file_exists($fileDir)) {
+                PicturesHealper::fileForceDownload($fileDir);
+            } else {
+                $_SESSION['message'] = 'Файл не найден... :(';
+                $_SESSION['type_message'] = 'alert alert-danger';
+                header('Location: /');
+            }
+
+        }
+    }
 
 }

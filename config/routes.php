@@ -6,6 +6,8 @@ return [
 
     'pictures/del/([0-9]+)' => 'pictures/delete/$1', // actionDelete in PicturesController
 
+    'pictures/download/([0-9]+)' => 'pictures/download/$1', // actionDownload in PicturesController
+
     'testpage' => 'pictures/testpage', // actionTestpage in PicturesController
 
     'pictures/add' => 'pictures/add', // actionAdd in PicturesController

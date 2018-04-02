@@ -32,6 +32,15 @@ class View
 
     }
 
+    public function generateFormOnePicture($arr)
+    {
+        $controllerFile = ROOT . '/view/one_pic.php';
+        if (file_exists($controllerFile)) {
+            include_once($controllerFile);
+        }
+
+    }
+
     public function generateFormAdd()
     {
         $controllerFile = ROOT . '/view/upload.php';
