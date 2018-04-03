@@ -58,6 +58,24 @@ class View
         }
     }
 
+
+    public function loginPage()
+    {
+        $controllerFile = ROOT . '/view/login_form.php';
+        if (file_exists($controllerFile)) {
+            include_once($controllerFile);
+        }
+    }
+
+    public function registrationPage()
+    {
+        $controllerFile = ROOT . '/view/registration_form.php';
+        if (file_exists($controllerFile)) {
+            include_once($controllerFile);
+        }
+    }
+
+
     public function test()
     {
         $controllerFile = ROOT . '/view/testpage.php';

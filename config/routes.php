@@ -12,6 +12,10 @@ return [
 
     'pictures/add' => 'pictures/add', // actionAdd in PicturesController
 
+    'login' => 'users/login', // actionLogin in UsersController
+
+    'registration' => 'users/registration', // actionRegistration in UsersController
+
     '' => 'pictures/index', // actionIndex in PicturesController
 
 

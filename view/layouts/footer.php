@@ -1,5 +1,5 @@
 <footer class="container">
-    <p class="text-right">&copy; Company 2017-2018</p>
+    <p class="mt-5 mb-3 text-muted text-center">&copy; Company 2017-2018</p>
 </footer>
 
 
