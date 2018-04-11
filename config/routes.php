@@ -1,12 +1,7 @@
 <?php
 return [
-    'pictures/add/uploadfile' => 'pictures/uploadfile', // actionUploadfile in PicturesController
 
     'pictures/([0-9]+)' => 'pictures/view/$1', // actionView in PicturesController
-
-    'pictures/del/([0-9]+)' => 'pictures/delete/$1', // actionDelete in PicturesController
-
-    'pictures/download/([0-9]+)' => 'pictures/download/$1', // actionDownload in PicturesController
 
     'testpage' => 'pictures/testpage', // actionTestpage in PicturesController
 
@@ -16,8 +11,8 @@ return [
 
     'registration' => 'users/registration', // actionRegistration in UsersController
 
+    'account' => 'account/view', // actionView in AccountController
+
     '' => 'pictures/index', // actionIndex in PicturesController
-
-
 
 ];

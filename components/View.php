@@ -3,12 +3,6 @@
 class View
 {
 
-    /**
-     * Получаем масив и генерируем блоки с картинками
-     * получаем строку с данными и сетим её в $readyBlock
-     * @param $arrDataFromDb
-     */
-
 
     public function __construct()
     {
@@ -59,7 +53,7 @@ class View
     }
 
 
-    public function loginPage()
+    public function loginPage($errors)
     {
         $controllerFile = ROOT . '/view/login_form.php';
         if (file_exists($controllerFile)) {
@@ -67,7 +61,7 @@ class View
         }
     }
 
-    public function registrationPage()
+    public function registrationPage($errors)
     {
         $controllerFile = ROOT . '/view/registration_form.php';
         if (file_exists($controllerFile)) {

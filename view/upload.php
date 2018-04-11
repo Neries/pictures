@@ -1,10 +1,10 @@
 <div class="container" style="padding-top: 65px">
 
-    <form action="add/uploadfile" method="post" enctype=multipart/form-data>
+    <form action="add" method="post" enctype=multipart/form-data>
 
         <div class="form-group">
             <label for="name">Picture name:</label>
-            <input class="form-control" id="name" name="name" type="text" placeholder="Set picture name" required>
+            <input class="form-control" id="name" name="name" type="text" maxlength="11" placeholder="Set picture name" required>
         </div>
 
         <div class="form-group">
@@ -21,7 +21,7 @@
                 <small id="fileHelp" class="form-text text-muted">*.png *.jpg</small>
             </div>
             <div class="form-group col-sm-10">
-                <input type=submit class="btn btn-primary pull-right" value=Загрузить>
+                <input type=submit name="submit" class="btn btn-primary pull-right" value="Загрузить">
             </div>
         </div>
     </form>

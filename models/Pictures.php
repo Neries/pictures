@@ -22,7 +22,7 @@ class Pictures
 
             $result->setFetchMode(PDO::FETCH_ASSOC);
 
-            $newsItem = $result->fetchAll();
+            $newsItem = $result->fetch();
 
             return $newsItem;
         }

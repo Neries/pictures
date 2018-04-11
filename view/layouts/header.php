@@ -39,8 +39,12 @@
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
-            <a href="/pictures/add" class="form-control mr-sm-2 btn btn-primary btn-lg active" role="button"
-               aria-pressed="true">Добавить</a>
+            <a href="/pictures/add" class="form-control mr-sm-2 btn btn-success btn-lg active" role="button"
+            aria-pressed="true">Добавить</a>
+
+            <a href="<?=isset($_SESSION['user_name']) ? 'account' : 'login' ?>" class="form-control mr-sm-2 btn btn-primary btn-lg active" role="button"
+               aria-pressed="true"><?=isset($_SESSION['user_name']) ? $_SESSION['user_name'] : 'Войти' ?></a>
+
             <input class="form-control mr-sm-2" type="text" placeholder="Имя картинки" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Поиск</button>
         </form>
