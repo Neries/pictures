@@ -9,13 +9,14 @@
         </div>
 
         <div class="form-label-group">
-            <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email адрес" required
-                   autofocus>
+            <input type="email" name="email" id="inputEmail" class="form-control" placeholder="Email адрес"
+                   value="<?=isset($_POST['email']) ? $_POST['email'] : ''?>" required autofocus>
             <label for="inputEmail">Email адрес</label>
         </div>
 
         <div class="form-label-group">
-            <input type="text" name="name" id="inputName" class="form-control" placeholder="Name" required autofocus>
+            <input type="text" name="name" id="inputName" class="form-control" placeholder="Name"
+                   value="<?=isset($_POST['name']) ? $_POST['name'] : ''?>" required autofocus>
             <label for="inputName">Имя</label>
         </div>
 

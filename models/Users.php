@@ -3,36 +3,12 @@
 
 class Users
 {
-    public static function checkName($name)
-    {
-        if(strlen($name) >= 2){
-            return true;
-        }
-
-        return false;
-    }
-
-    public static function checkPassword($password)
-    {
-        if(strlen($password) >= 6){
-            return true;
-        }
-        return false;
-    }
-
-    public static function checkEmail($email)
-    {
-        if (filter_var($email, FILTER_VALIDATE_EMAIL)){
-            return true;
-        }
-        return false;
-    }
 
     public static function checkEmailExists($email)
     {
         $db = Db::getConnection();
 
-        $sql = 'SELECT * FROM users WHERE email = :email';
+        $sql = 'SELECT COUNT(*) FROM users WHERE email = :email';
         $result = $db->prepare($sql);
         $result->bindParam(':email',$email, PDO::PARAM_STR);
         $result->execute();
@@ -98,19 +74,4 @@ class Users
 
     }
 
-    public static function auth($userData){
-        $_SESSION['user_id'] = $userData['id'];
-        $_SESSION['user_name'] = $userData['name'];
-
-
-    }
-
-    public static function checkLogged()
-    {
-        if (isset($_SESSION['user_id'])){
-            return $_SESSION['user_id'];
-        }
-
-        header("Location: /login");
-    }
 }

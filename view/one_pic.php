@@ -26,8 +26,8 @@
             <li class="list-group-item flex-column align-items-start ">
 
                 <p class="mb-1"><?= $arr['description'] ?></p>
-                <small class="text-muted"><?= date('j M Y', strtotime($arr['created_at'])) . ' in ' . date('H:i', strtotime($arr['created_at'])) ?>
-                    by NEED ADD
+                <small class="text-muted"><?= date('j M Y', strtotime($arr['created_at'])) .
+                    ' in ' . date('H:i', strtotime($arr['created_at'])).' by '.$arr['created_by']  ?>
                 </small>
             </li>
 

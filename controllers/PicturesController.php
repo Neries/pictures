@@ -3,6 +3,7 @@
 include_once ROOT . '/models/Pictures.php';
 include_once ROOT . '/components/View.php';
 include_once ROOT . '/healpers/PicturesHealper.php';
+include_once ROOT . '/healpers/UsersHealper.php';
 
 class PicturesController
 {
@@ -26,19 +27,21 @@ class PicturesController
             if (!empty($arr)) {
 
                 /////////////////ЗАГРУЗКА////////////////
-                if (isset($_POST['download'])){
-                        $arr = Pictures::getPicturesItemByID($id);
-                        $fileDir = ROOT . '/' . $arr['location'];
-                        if (file_exists($fileDir)) {
-                            PicturesHealper::fileForceDownload($fileDir);
-                        } else {
-                            $_SESSION['message'] = 'Файл не найден... :(';
-                            $_SESSION['type_message'] = 'alert alert-danger';
-                            header('Location: /');
+                if (isset($_POST['download'])) {
+                    UsersHealper::checkLogged();
+                    $arr = Pictures::getPicturesItemByID($id);
+                    $fileDir = ROOT . '/' . $arr['location'];
+                    if (file_exists($fileDir)) {
+                        PicturesHealper::fileForceDownload($fileDir);
+                    } else {
+                        $_SESSION['message'] = 'Файл не найден... :(';
+                        $_SESSION['type_message'] = 'alert alert-danger';
+                        header('Location: /');
                     }
                 }
                 /////////////////Удаление////////////////
-                if (isset($_POST['delete'])){
+                if (isset($_POST['delete'])) {
+                    UsersHealper::checkLogged();
                     Pictures::deletePictures($id);
                     header('Location: /');
                 }
@@ -52,7 +55,8 @@ class PicturesController
 
     public function actionAdd()
     {
-        if (isset($_POST['submit'])){
+        UsersHealper::checkLogged();
+        if (isset($_POST['submit'])) {
             $_SESSION['message'] = 'Упсс! Что то пошло не так :(';
             $_SESSION['type_message'] = 'alert alert-danger';
 

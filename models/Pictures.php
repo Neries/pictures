@@ -35,9 +35,7 @@ class Pictures
     public static function getPicturesList()
     {
         $db = Db::getConnection();
-
         $result = $db->query('SELECT * FROM pictures ORDER BY created_at DESC LIMIT 25');
-
 //        $picturesList = [];
 //        $i = 0;
 //        while ($row = $result->fetch()) {

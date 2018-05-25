@@ -69,6 +69,14 @@ class View
         }
     }
 
+    public function accountPage()
+    {
+        $controllerFile = ROOT . '/view/account.php';
+        if (file_exists($controllerFile)) {
+            include_once($controllerFile);
+        }
+    }
+
 
     public function test()
     {

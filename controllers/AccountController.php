@@ -13,7 +13,6 @@ class AccountController
         if(isset($_POST['submit'])){
             session_unset();
 
-
             $_SESSION['message'] = 'GL HF :)';
             $_SESSION['type_message'] = 'alert alert-danger';
 
@@ -21,9 +20,7 @@ class AccountController
             exit();
         }
         $master = new View();
-        $master->test();
+        $master->accountPage();
     }
-
-
 
 }

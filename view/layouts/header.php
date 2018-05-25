@@ -7,11 +7,18 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Pictures</title>
     <link href="/css/bootstrap.css" rel="stylesheet">
-    <script src="/css/jquery-3.2.1.slim.min.js"></script>
+    <script src="/css/jquery-3.3.1.js"></script>
+    <script src="/css/myJs.js"></script>
     <script src="/css/popper.min.js"></script>
     <script src="/css/bootstrap.min.js"></script>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <link href="/css/custom.css" rel="stylesheet">
+
+
+    <style>
+
+    </style>
+
 </head>
 <body>
 
@@ -38,16 +45,19 @@
                 </div>
             </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
+        <div class="form-inline my-2 my-lg-0">
             <a href="/pictures/add" class="form-control mr-sm-2 btn btn-success btn-lg active" role="button"
             aria-pressed="true">Добавить</a>
 
-            <a href="<?=isset($_SESSION['user_name']) ? 'account' : 'login' ?>" class="form-control mr-sm-2 btn btn-primary btn-lg active" role="button"
-               aria-pressed="true"><?=isset($_SESSION['user_name']) ? $_SESSION['user_name'] : 'Войти' ?></a>
+            <a href="<?=isset($_SESSION['auth']) ? 'account' : 'login' ?>" class="form-control mr-sm-2 btn btn-primary btn-lg active" role="button"
+               aria-pressed="true"><?=isset($_SESSION['auth']) ? $_SESSION['user_name'] : 'Войти' ?></a>
+<!--TODO: ПЕРЕДЕЛАТЬ ПОИСК-->
+            <input id="search" class="form-control mr-sm-2" type="text" placeholder="Имя картинки" aria-label="Search">
+            <ul class="search_result"></ul>
 
-            <input class="form-control mr-sm-2" type="text" placeholder="Имя картинки" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Поиск</button>
-        </form>
+
+        </div>
     </div>
 </nav>
 
@@ -64,4 +74,5 @@
     ?>
 
 </main>
+
 

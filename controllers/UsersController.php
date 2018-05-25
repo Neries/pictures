@@ -3,6 +3,7 @@
 include_once ROOT . '/models/Users.php';
 include_once ROOT . '/components/View.php';
 include_once ROOT . '/healpers/PicturesHealper.php';
+include_once ROOT . '/healpers/UsersHealper.php';
 
 
 class UsersController
@@ -16,24 +17,24 @@ class UsersController
         $errors = [];
 
         if(isset($_POST['submit'])){
-            $email = $_POST['email'];
+            $email = trim($_POST['email']);
             $password = $_POST['password'];
 
 
-            if (!Users::checkEmail($email)){
+            if (!UsersHealper::checkEmail($email)){
                 $errors[] = 'Неверный e-mail';
             }
 
-            if (!Users::checkPassword($password)){
+            if (!UsersHealper::checkPassword($password)){
                 $errors[] = 'Пароль не короче 6-ти символов.';
             }
 
             $userData = Users::authorizationUsers($email, $password);
 
             if (!$userData){
-                $errors[] = 'Пользователь не найден. Проверте вводимые данные.';
+                $errors[] = 'Пользователь не найден. Проверте вводимые данные или <a href="/registration">зарегистрируйтесь</a>.';
             }else {
-                Users::auth($userData);
+                UsersHealper::auth($userData);
 
                 $_SESSION['message'] = 'С возвращением '.$userData['name'].'!';
                 $_SESSION['type_message'] = 'alert alert-success';
@@ -57,21 +58,22 @@ class UsersController
         $errors = [];
 
         if(isset($_POST['submit'])){
-            $name = $_POST['name'];
-            $email = $_POST['email'];
+            $name = trim($_POST['name']);
+            $email = trim($_POST['email']);
             $password = $_POST['password'];
+            $password2= $_POST['confirmPassword'];
 
 
 
-            if (!Users::checkName($name)){
+            if (!UsersHealper::checkName($name)){
                 $errors[] = 'Имя не короче 2-х символов.';
             }
 
-            if (!Users::checkEmail($email)){
+            if (!UsersHealper::checkEmail($email)){
                 $errors[] = 'Неверный e-mail';
             }
 
-            if (!Users::checkPassword($password)){
+            if (!UsersHealper::checkPassword($password)){
                 $errors[] = 'Пароль не короче 6-ти символов.';
             }
 
@@ -79,9 +81,16 @@ class UsersController
                 $errors[] = 'Такой e-mail уже используется';
             }
 
+            if ($password != $password2){
+                $errors[] = 'Повторный пароль введен неверно!';
+            }
+
 
             if (!$errors){
                 Users::registrationUsers($name, $email, $password);
+
+                $userData = Users::authorizationUsers($email, $password);
+                UsersHealper::auth($userData);
 
                 $_SESSION['message'] = 'Добро пожаловать '.$name.'!';
                 $_SESSION['type_message'] = 'alert alert-success';
@@ -95,7 +104,5 @@ class UsersController
         $master = new View();
         $master->registrationPage($errors);
     }
-
-
 
 }
